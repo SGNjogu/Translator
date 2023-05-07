@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Translation.Views.Pages.Auth.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    BackgroundColor="White"
+    BindingContext="{Binding AuthViewModel, Source={StaticResource Locator}}"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.5*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                Grid.Row="0"
+                Margin="0,0,0,10"
+                Padding="0,0,0,0"
+                HeightRequest="10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="70"
+                    Source="icon.png"
+                    WidthRequest="70" />
+
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,0,0,0"
+                VerticalOptions="Start">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Tala"
+                    TextColor="{DynamicResource AccentColor}"
+                    VerticalOptions="Center"
+                    WidthRequest="200" />
+
+            </StackLayout>
+
+            <Image
+                Grid.Row="2"
+                Margin="0"
+                Aspect="AspectFit"
+                Source="loginPic.png"
+                VerticalOptions="FillAndExpand"
+                WidthRequest="300" />
+
+            <pancakeView:PancakeView
+                Grid.Row="3"
+                Padding="15,10,15,10"
+                touch:TouchEff.Command="{Binding SignInCommand}"
+                touch:TouchEff.PressedAnimationDuration="300"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="300"
+                BackgroundColor="{DynamicResource AccentColor}"
+                CornerRadius="3"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="150">
+
+                <Label
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Text="Login"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+
+            </pancakeView:PancakeView>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

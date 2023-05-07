@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Translation.Views.Pages.Help.About"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    Title="About"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BindingContext="{Binding HelpViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                Grid.Row="0"
+                Margin="10"
+                Padding="0,20,0,0">
+
+                <Image
+                    HeightRequest="150"
+                    HorizontalOptions="Center"
+                    Source="icon.png"
+                    WidthRequest="150" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="23"
+                    HorizontalTextAlignment="Center"
+                    Text="Tala"
+                    TextColor="{DynamicResource AccentColor}" />
+
+                <Label
+                    FontSize="18"
+                    HorizontalTextAlignment="Center"
+                    TextColor="Gray">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Version: " />
+                            <Span Text="{Binding Version}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </StackLayout>
+
+            <Label
+                Grid.Row="1"
+                Margin="15"
+                touch:TouchEff.Command="{Binding GoToSiteCommand}"
+                touch:TouchEff.CommandParameter="https://www.fitts.io"
+                touch:TouchEff.PressedAnimationDuration="300"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="300"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="www.fitts.io"
+                TextColor="Blue"
+                TextDecorations="Underline"
+                VerticalOptions="End" />
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

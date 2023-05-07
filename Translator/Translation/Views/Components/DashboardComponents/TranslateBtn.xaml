@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Translation.Views.Components.DashboardComponents.TranslateBtn"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect">
+
+    <pancakeView:PancakeView
+        Padding="0"
+        CornerRadius="30"
+        HeightRequest="60"
+        WidthRequest="60">
+
+        <!--<pancakeView:PancakeView.Border>
+            <pancakeView:Border Thickness="3" Color="{Binding HaloColor}" />
+        </pancakeView:PancakeView.Border>-->
+
+        <pancakeView:PancakeView
+            touch:TouchEff.Command="{Binding TranslateCommand}"
+            touch:TouchEff.PressedAnimationDuration="300"
+            touch:TouchEff.PressedOpacity="0.6"
+            touch:TouchEff.PressedScale="0.9"
+            touch:TouchEff.RegularAnimationDuration="300"
+            BackgroundColor="{DynamicResource AccentColor}"
+            CornerRadius="27"
+            HeightRequest="54"
+            HorizontalOptions="Center"
+            Shadow="{pancakeView:ShadowMarkup BlurRadius=15,
+                                              Offset='10,10'}"
+            VerticalOptions="Center"
+            WidthRequest="54">
+
+            <!--<pancakeView:PancakeView.Border>
+                <pancakeView:Border Thickness="5" Color="{Binding HaloColor}" />
+            </pancakeView:PancakeView.Border>-->
+
+            <pancakeView:PancakeView.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsFirstTranslation}"
+                    TargetType="pancakeView:PancakeView"
+                    Value="True">
+                    <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+                <DataTrigger
+                    Binding="{Binding IsFirstTranslation}"
+                    TargetType="pancakeView:PancakeView"
+                    Value="False">
+                    <Setter Property="IsVisible" Value="True" />
+                </DataTrigger>
+            </pancakeView:PancakeView.Triggers>
+
+            <Label
+                FontFamily="FontAwesomeSolid"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                Text="{Binding TranslateBtnIcon}"
+                TextColor="White"
+                VerticalTextAlignment="Center" />
+
+        </pancakeView:PancakeView>
+    </pancakeView:PancakeView>
+
+</ContentView>

@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Translation.Views.Pages.Dashboard.Dashboard"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customControls="clr-namespace:Translation.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:speechComponents="clr-namespace:Translation.Views.Components.ChatComponents"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    xmlns:translateBtn="clr-namespace:Translation.Views.Components.DashboardComponents"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    mc:Ignorable="d">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="LeftText">
+                <speechComponents:Speaker1 />
+            </DataTemplate>
+            <DataTemplate x:Key="RightText">
+                <speechComponents:Speaker2 />
+            </DataTemplate>
+            <speechComponents:ChatDataTemplateSelector
+                x:Key="ChatDataTemplateSelector"
+                Person1="{StaticResource LeftText}"
+                Person2="{StaticResource RightText}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+
+        <Grid RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Margin="0,15,0,0"
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                FlowDirection="LeftToRight"
+                VerticalOptions="Center">
+
+                <StackLayout>
+                    <Label HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Session number:  " />
+                                <Span Text="{Binding SessionNumber}" TextColor="{DynamicResource AccentColor}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <BoxView
+                        Margin="15,5,15,5"
+                        BackgroundColor="{DynamicResource PlaceholderColor}"
+                        HeightRequest="0.5"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center" />
+                </StackLayout>
+
+            </Grid>
+
+            <customControls:ZoomListView
+                x:Name="listview"
+                Grid.Row="1"
+                HasUnevenRows="True"
+                ItemTemplate="{StaticResource ChatDataTemplateSelector}"
+                ItemsSource="{Binding ChatList}"
+                SelectionMode="None"
+                SeparatorVisibility="None" />
+
+            <StackLayout
+                Grid.Row="1"
+                Margin="0,0,30,-30"
+                HorizontalOptions="End"
+                VerticalOptions="End">
+
+                <StackLayout.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsTranslating}"
+                        TargetType="StackLayout"
+                        Value="True">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding IsTranslating}"
+                        TargetType="StackLayout"
+                        Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </StackLayout.Triggers>
+
+                <pancakeView:PancakeView
+                    Padding="0"
+                    touch:TouchEff.Command="{Binding MuteUnmuteCommand}"
+                    touch:TouchEff.PressedAnimationDuration="300"
+                    touch:TouchEff.PressedOpacity="0.6"
+                    touch:TouchEff.PressedScale="0.9"
+                    touch:TouchEff.RegularAnimationDuration="300"
+                    BackgroundColor="{DynamicResource SecondaryAccentShade}"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="50">
+
+                    <pancakeView:PancakeView
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="15"
+                        HeightRequest="30"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="30">
+
+                        <Label
+                            FontFamily="FontAwesomeSolid"
+                            FontSize="20"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding MuteBtnIcon}"
+                            TextColor="{DynamicResource AccentColor}"
+                            VerticalTextAlignment="Center" />
+
+                    </pancakeView:PancakeView>
+                </pancakeView:PancakeView>
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="{Binding MuteBtnText}"
+                    TextColor="{DynamicResource AccentColor}" />
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsFirstTranslation}"
+                VerticalOptions="Center">
+
+                <pancakeView:PancakeView
+                    Padding="0"
+                    touch:TouchEff.Command="{Binding FirstTranslateCommand}"
+                    touch:TouchEff.PressedAnimationDuration="300"
+                    touch:TouchEff.PressedOpacity="0.6"
+                    touch:TouchEff.PressedScale="0.9"
+                    touch:TouchEff.RegularAnimationDuration="300"
+                    BackgroundColor="{DynamicResource SecondaryAccentShade}"
+                    CornerRadius="35"
+                    HeightRequest="70"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="70">
+
+                    <pancakeView:PancakeView
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="50">
+
+                        <Label
+                            FontFamily="FontAwesomeSolid"
+                            FontSize="23"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Microphone}"
+                            TextColor="{DynamicResource AccentColor}"
+                            VerticalTextAlignment="Center" />
+
+                    </pancakeView:PancakeView>
+                </pancakeView:PancakeView>
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Translate"
+                    TextColor="{DynamicResource AccentColor}" />
+            </StackLayout>
+
+            <Grid
+                Grid.Row="2"
+                Margin="0,0,0,90"
+                Padding="20,20,20,0"
+                RowSpacing="25"
+                VerticalOptions="End">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Choose your source and target &#x0a;languages by tapping on a flag.">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsTranslating}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger
+                            Binding="{Binding IsTranslating}"
+                            TargetType="Label"
+                            Value="False">
+                            <Setter Property="IsVisible" Value="True" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+
+                <Grid Grid.Row="1">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0" HorizontalOptions="Start">
+
+                        <pancakeView:PancakeView
+                            Padding="0"
+                            touch:TouchEff.Command="{Binding OpenLanguagesPopupCommand}"
+                            touch:TouchEff.CommandParameter="True"
+                            touch:TouchEff.PressedAnimationDuration="300"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.9"
+                            touch:TouchEff.RegularAnimationDuration="300"
+                            BackgroundColor="{DynamicResource SecondaryAccentShade}"
+                            CornerRadius="25"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="50">
+
+                            <pancakeView:PancakeView.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsTranslating}"
+                                    TargetType="pancakeView:PancakeView"
+                                    Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding IsTranslating}"
+                                    TargetType="pancakeView:PancakeView"
+                                    Value="False">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </pancakeView:PancakeView.Triggers>
+
+                            <pancakeView:PancakeView
+                                BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
+
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="30"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30">
+
+                                    <Image.Source>
+                                        <FileImageSource File="{Binding DisplayPrimaryLanguage.Flag}" />
+                                    </Image.Source>
+
+                                </Image>
+
+                            </pancakeView:PancakeView>
+                        </pancakeView:PancakeView>
+
+                        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontSize="13" Text="Translate from:&#x0a;" />
+                                    <Span Text="{Binding DisplayPrimaryLanguage.DisplayName}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+
+                    <StackLayout
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End">
+
+                        <StackLayout.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsFirstTranslation}"
+                                TargetType="StackLayout"
+                                Value="True">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding IsFirstTranslation}"
+                                TargetType="StackLayout"
+                                Value="False">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </StackLayout.Triggers>
+
+                        <StackLayout>
+
+                            <pancakeView:PancakeView
+                                Padding="0"
+                                touch:TouchEff.Command="{Binding TranslateCommand}"
+                                touch:TouchEff.PressedAnimationDuration="300"
+                                touch:TouchEff.PressedOpacity="0.6"
+                                touch:TouchEff.PressedScale="0.9"
+                                touch:TouchEff.RegularAnimationDuration="300"
+                                BackgroundColor="{DynamicResource SecondaryAccentShade}"
+                                CornerRadius="25"
+                                HeightRequest="50"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="50">
+
+                                <pancakeView:PancakeView
+                                    BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                                    CornerRadius="15"
+                                    HeightRequest="30"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30">
+
+                                    <Label
+                                        FontFamily="FontAwesomeSolid"
+                                        FontSize="20"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding TranslateBtnIcon}"
+                                        TextColor="{DynamicResource AccentColor}"
+                                        VerticalTextAlignment="Center" />
+
+                                </pancakeView:PancakeView>
+                            </pancakeView:PancakeView>
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="{Binding TranslateBtnText}"
+                                TextColor="{DynamicResource AccentColor}" />
+                        </StackLayout>
+
+                        <pancakeView:PancakeView
+                            Padding="3,2,3,2"
+                            touch:TouchEff.Command="{Binding SwitchSpeakerCommand}"
+                            touch:TouchEff.PressedAnimationDuration="300"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.9"
+                            touch:TouchEff.RegularAnimationDuration="300"
+                            BackgroundColor="{DynamicResource AccentColor}"
+                            CornerRadius="20"
+                            IsVisible="{Binding ShowSwitchButton}"
+                            VerticalOptions="End">
+
+                            <Label
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="20"
+                                HorizontalTextAlignment="Center"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.Exchange}"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
+
+                        </pancakeView:PancakeView>
+
+                    </StackLayout>
+
+                    <ActivityIndicator
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        IsRunning="True"
+                        Color="{DynamicResource AccentColor}">
+                        <ActivityIndicator.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsSecondaryLanguageVisible}"
+                                TargetType="ActivityIndicator"
+                                Value="True">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding IsSecondaryLanguageVisible}"
+                                TargetType="ActivityIndicator"
+                                Value="False">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </ActivityIndicator.Triggers>
+                    </ActivityIndicator>
+
+                    <StackLayout
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        IsVisible="{Binding IsSecondaryLanguageVisible}">
+
+                        <pancakeView:PancakeView
+                            Padding="0"
+                            touch:TouchEff.Command="{Binding OpenLanguagesPopupCommand}"
+                            touch:TouchEff.CommandParameter="False"
+                            touch:TouchEff.PressedAnimationDuration="300"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.9"
+                            touch:TouchEff.RegularAnimationDuration="300"
+                            BackgroundColor="{DynamicResource SecondaryAccentShade}"
+                            CornerRadius="25"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="50">
+
+                            <pancakeView:PancakeView.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsTranslating}"
+                                    TargetType="pancakeView:PancakeView"
+                                    Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding IsTranslating}"
+                                    TargetType="pancakeView:PancakeView"
+                                    Value="False">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </pancakeView:PancakeView.Triggers>
+
+                            <pancakeView:PancakeView
+                                BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="30">
+
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="30"
+                                    VerticalOptions="Center"
+                                    WidthRequest="30">
+
+                                    <Image.Source>
+                                        <FileImageSource File="{Binding DisplaySecondaryLanguage.Flag}" />
+                                    </Image.Source>
+
+                                </Image>
+
+                            </pancakeView:PancakeView>
+                        </pancakeView:PancakeView>
+
+                        <Label HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontSize="13" Text="Translate to:&#x0a;" />
+                                    <Span Text="{Binding DisplaySecondaryLanguage.DisplayName}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </ContentView.Content>
+
+</ContentView>

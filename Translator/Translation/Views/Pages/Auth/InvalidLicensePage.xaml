@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Translation.Views.Pages.Auth.InvalidLicensePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    BackgroundColor="White"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height=".5*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                Grid.Row="0"
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                HeightRequest="10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="70"
+                    Source="icon.png"
+                    WidthRequest="70" />
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Margin="0,40,0,0">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Invalid Licence"
+                    TextColor="{DynamicResource AccentColor}"
+                    VerticalOptions="Center"
+                    WidthRequest="200" />
+
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="2"
+                HorizontalOptions="Center"
+                Spacing="10"
+                VerticalOptions="Center">
+
+                <Label
+                    Margin="0,0,0,40"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Your licence verification failed."
+                    TextColor="{DynamicResource SecondaryAccentColor}"
+                    VerticalOptions="Center"
+                    WidthRequest="250" />
+                <Label
+                    x:Name="errorMessage"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    TextColor="{DynamicResource SecondaryAccentColor}"
+                    VerticalOptions="Center"
+                    WidthRequest="250" />
+                <Label
+                    x:Name="errorActionMessage"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    TextColor="{DynamicResource SecondaryAccentColor}"
+                    VerticalOptions="Center"
+                    WidthRequest="250" />
+
+            </StackLayout>
+
+            <pancakeView:PancakeView
+                Grid.Row="3"
+                Padding="15,10,15,10"
+                touch:TouchEff.Command="{Binding RetryLoginCommand}"
+                touch:TouchEff.PressedAnimationDuration="300"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="300"
+                BackgroundColor="{DynamicResource AccentColor}"
+                CornerRadius="3"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="150">
+
+                <Label
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Text="Retry"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+
+            </pancakeView:PancakeView>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

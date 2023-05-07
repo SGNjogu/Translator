@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Speech.V1" Version="2.7.0" />
+    <PackageReference Include="Google.Cloud.Translate.V3" Version="2.4.0" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.25.0" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+  </ItemGroup>
+
+</Project>

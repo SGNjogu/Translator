@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Translation.Views.Pages.Help.Features"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="What's New"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    BindingContext="{Binding HelpViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+
+        <ScrollView>
+
+            <StackLayout Margin="10">
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HorizontalTextAlignment="Center"
+                    Text="What's new in Tala?" />
+
+                <Label
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="{Binding ReleaseDate, StringFormat='{0:MMMM, yyyy}'}"
+                    TextColor="Gray" />
+
+                <StackLayout
+                    BindableLayout.ItemsSource="{Binding ReleaseNotes}"
+                    HorizontalOptions="Center"
+                    Orientation="Vertical"
+                    Spacing="10">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+
+                            <Label
+                                FontSize="18"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding .}" />
+
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

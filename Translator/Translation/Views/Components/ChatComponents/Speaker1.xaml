@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell
+    x:Class="Translation.Views.Components.ChatComponents.Speaker1"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    mc:Ignorable="d">
+
+    <Grid
+        touch:TouchEff.LongPressCommand="{Binding OpenPopupCommand}"
+        touch:TouchEff.LongPressDuration="500"
+        touch:TouchEff.PressedAnimationDuration="300"
+        touch:TouchEff.PressedOpacity="0.6"
+        touch:TouchEff.PressedScale="0.9"
+        touch:TouchEff.RegularAnimationDuration="300"
+        HorizontalOptions="Start"
+        WidthRequest="350">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Image
+            Grid.Column="0"
+            Margin="5,5,0,5"
+            Aspect="AspectFit"
+            HeightRequest="35"
+            Source="{Binding SentimentEmoji}"
+            VerticalOptions="End"
+            WidthRequest="35" />
+
+        <pancakeView:PancakeView
+            Grid.Column="1"
+            Margin="0,5,5,5"
+            Padding="10"
+            BackgroundColor="{DynamicResource ComponentColor}"
+            CornerRadius="15"
+            HorizontalOptions="Start">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="{DynamicResource TranscriptionsFontSize}"
+                        Text="{Binding Person}" />
+                    <Label
+                        Grid.Column="1"
+                        FontSize="{DynamicResource TranscriptionsMetadataFontSize}"
+                        Text="{Binding DateString}"
+                        TextColor="Gray" />
+
+                </Grid>
+
+                <Label
+                    Grid.Row="1"
+                    HorizontalTextAlignment="Start"
+                    LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="{DynamicResource TranscriptionsFontSize}"
+                                Text="Original: "
+                                TextColor="Gray" />
+                            <Span FontSize="{DynamicResource TranscriptionsFontSize}" Text="{Binding OriginalText}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    Grid.Row="2"
+                    HorizontalTextAlignment="Start"
+                    LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontAttributes="Bold"
+                                FontSize="{DynamicResource TranscriptionsFontSize}"
+                                Text="Translated: "
+                                TextColor="Gray" />
+                            <Span FontSize="{DynamicResource TranscriptionsFontSize}" Text="{Binding TranslatedText}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </Grid>
+
+        </pancakeView:PancakeView>
+
+    </Grid>
+
+</ViewCell>

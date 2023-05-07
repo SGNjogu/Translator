@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F62739B3-93D6-4481-B7B4-887411CF8B99}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Translation.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>Translation.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|iPhoneSimulator'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\iPhoneSimulator\Dev\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Dev|iPhone'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\iPhone\Dev\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|iPhoneSimulator'">
+    <OutputPath>bin\iPhoneSimulator\Staging\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|iPhone'">
+    <OutputPath>bin\iPhone\Staging\</OutputPath>
+    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CustomControls\BorderlessEntry.cs" />
+    <Compile Include="CustomControls\BorderlessPicker.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\iOSMicrophoneService.cs" />
+    <Compile Include="Utils\AppSetting.cs" />
+    <Compile Include="Utils\StatusBarUtility.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-29x29@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-29x29@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-40x40@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-40x40@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-60x60@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-60x60@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon@1x1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon@2x1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ItunesArtwork@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.2.0.534</Version>
+    </PackageReference>
+    <PackageReference Include="dotMorten.Xamarin.Forms.AutoSuggestBox">
+      <Version>1.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Grpc.Core.Xamarin">
+      <Version>2.44.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Analytics">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Crashes">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CognitiveServices.Speech">
+      <Version>1.25.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Identity.Client">
+      <Version>4.37.0</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.MediaManager.Forms">
+      <Version>1.0.9</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.14</Version>
+    </PackageReference>
+    <PackageReference Include="Sharpnado.Tabs">
+      <Version>2.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Numerics.Vectors">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="TouchView">
+      <Version>4.1.100</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Translation\Translation.csproj">
+      <Project>{ABB6B9E0-8C1C-4F67-8C41-0E72C9A6C69B}</Project>
+      <Name>Translation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sign_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ms_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\saudi_arabia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\spain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\denmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\germany.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\australia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\canada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\united_kingdom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\india.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\united_states_of_america.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mexico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\finland.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\france.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\italy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\japan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\norway.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\netherlands.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\monaco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\portugal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\russia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sweden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\china.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\thailand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\turkey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\negative.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\neutral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\smiling.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bulgaria.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\croatia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\czech-republic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\greece.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hungary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\romania.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\slovakia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\slovenia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\immersivereader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\israel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\indonesia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\malaysia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vietnam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\south_korea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hong_kong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\taiwan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\brazil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\malta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lithuania.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\kenya.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pakistan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\latvia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ireland.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\estonia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ukraine.png" />
+  </ItemGroup>
+</Project>

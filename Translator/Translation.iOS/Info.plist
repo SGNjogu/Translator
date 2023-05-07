@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>Translation</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.sgn.Translation</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>CFBundleName</key>
+	<string>Translation</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Voice transcription requires microphone access</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>The Translator wants to use your microphone to record audio.</string>
+	<key>CFBundleURLName</key>
+    <string>active-directory-b2c-xamarin-native</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>msalc6380b83-1161-4764-9687-0dcdf66c8027</string>
+    </array>
+    <key>CFBundleTypeRole</key>
+    <string>None</string>
+</dict>
+</plist>

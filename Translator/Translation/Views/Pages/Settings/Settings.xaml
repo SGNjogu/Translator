@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Translation.Views.Pages.Settings.Settings"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customControls="clr-namespace:Translation.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    mc:Ignorable="d">
+
+    <NavigationPage.TitleView>
+        <StackLayout
+            Padding="5,0,0,0"
+            Orientation="Horizontal"
+            Spacing="10">
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="30"
+                Source="icon" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Settings"
+                TextColor="{DynamicResource SecondaryAccentColor}"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentView.Content>
+
+        <ScrollView>
+
+            <Grid Margin="0,0,0,20" RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Margin="10,13,10,10"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    Text="Default Languages" />
+
+                <Grid
+                    Grid.Row="1"
+                    Padding="10,10,10,15"
+                    BackgroundColor="{DynamicResource ComponentColor}"
+                    RowSpacing="20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Text="Select your default Languages when the  application launches"
+                        TextColor="Gray" />
+
+                    <StackLayout Grid.Row="1">
+
+                        <Label FontAttributes="Bold" Text="Default Language" />
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <customControls:BorderlessPicker
+                                    Grid.Column="0"
+                                    FontSize="15"
+                                    HeightRequest="35"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Languages}"
+                                    SelectedItem="{Binding DefaultSourceLanguage, Mode=TwoWay}"
+                                    TextColor="{DynamicResource SecondaryAccentColor}" />
+
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="0,5,5,0"
+                                    FontFamily="FontAwesomeRegular"
+                                    FontSize="18"
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.ChevronDown}"
+                                    TextColor="{DynamicResource SecondaryAccentColor}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+
+                            <BoxView
+                                Grid.Row="1"
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End"
+                                Color="Gray" />
+
+                        </Grid>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2">
+
+                        <Label FontAttributes="Bold" Text="Default Translation Language" />
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <customControls:BorderlessPicker
+                                    Grid.Column="0"
+                                    FontSize="15"
+                                    HeightRequest="35"
+                                    ItemDisplayBinding="{Binding Name}"
+                                    ItemsSource="{Binding Languages}"
+                                    SelectedItem="{Binding DefaultTargetLanguage, Mode=TwoWay}"
+                                    TextColor="{DynamicResource SecondaryAccentColor}" />
+
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="0,5,5,0"
+                                    FontFamily="FontAwesomeRegular"
+                                    FontSize="18"
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.ChevronDown}"
+                                    TextColor="{DynamicResource SecondaryAccentColor}"
+                                    VerticalTextAlignment="Center" />
+
+                            </Grid>
+
+                            <BoxView
+                                Grid.Row="1"
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End"
+                                Color="Gray" />
+
+                        </Grid>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3">
+
+                        <Label FontAttributes="Bold" Text="Select Audio Device" />
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="1" />
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <customControls:BorderlessPicker
+                                    Grid.Column="0"
+                                    FontSize="15"
+                                    HeightRequest="35"
+                                    ItemDisplayBinding="{Binding ParentName}"
+                                    ItemsSource="{Binding AudioDevices}"
+                                    SelectedItem="{Binding SelectedAudioDevice, Mode=TwoWay}"
+                                    TextColor="{DynamicResource SecondaryAccentColor}" />
+
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="0,5,5,0"
+                                    FontFamily="FontAwesomeRegular"
+                                    FontSize="18"
+                                    Text="{x:Static fontawesome:FontAwesomeIcons.ChevronDown}"
+                                    TextColor="{DynamicResource SecondaryAccentColor}"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+
+                            <BoxView
+                                Grid.Row="1"
+                                HeightRequest="1"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End"
+                                Color="Gray" />
+
+                        </Grid>
+
+                    </StackLayout>
+
+                </Grid>
+
+                <Label
+                    Grid.Row="2"
+                    Margin="10"
+                    FontAttributes="Bold"
+                    FontSize="17"
+                    Text="Mode" />
+
+                <!--<Grid Grid.Row="3" RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+
+                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="Gray" />
+
+                </Grid>-->
+
+                <Grid
+                    Grid.Row="3"
+                    BackgroundColor="{DynamicResource ComponentColor}"
+                    HeightRequest="55"
+                    RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Margin="0,3,0,0"
+                        Padding="10"
+                        touch:TouchEff.Command="{Binding ThemeChangeCommand}"
+                        touch:TouchEff.CommandParameter="LightTheme"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        ColumnSpacing="15"
+                        HeightRequest="30">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="18"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Sun}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="Light"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="2"
+                            Margin="0,0,5,0"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="18"
+                            IsVisible="{Binding IsLightTheme}"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Check}"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+
+                    <BoxView
+                        Grid.Row="1"
+                        Margin="10,0,10,0"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="Gray" />
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="4"
+                    BackgroundColor="{DynamicResource ComponentColor}"
+                    HeightRequest="55"
+                    RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Padding="10"
+                        touch:TouchEff.Command="{Binding ThemeChangeCommand}"
+                        touch:TouchEff.CommandParameter="DarkTheme"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        ColumnSpacing="15"
+                        HeightRequest="30">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="18"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Moon}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="Dark"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="2"
+                            Margin="0,0,5,0"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="18"
+                            IsVisible="{Binding IsDarkTheme}"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Check}"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+                    <BoxView
+                        Grid.Row="1"
+                        Margin="10,0,10,0"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="Gray" />
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="5"
+                    BackgroundColor="{DynamicResource ComponentColor}"
+                    HeightRequest="68"
+                    RowSpacing="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="1" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Padding="10"
+                        touch:TouchEff.Command="{Binding ThemeChangeCommand}"
+                        touch:TouchEff.CommandParameter="SystemPreferred"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        ColumnSpacing="15"
+                        HeightRequest="30">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="18"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Cogs}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="1"
+                            Text="System Preferred"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="2"
+                            Margin="0,0,5,0"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="18"
+                            IsVisible="{Binding IsSystemPreferredTheme}"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Check}"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+                    <BoxView
+                        Grid.Row="1"
+                        Margin="10,0,10,0"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="Gray" />
+
+                </Grid>
+
+            </Grid>
+
+        </ScrollView>
+
+    </ContentView.Content>
+
+</ContentView>

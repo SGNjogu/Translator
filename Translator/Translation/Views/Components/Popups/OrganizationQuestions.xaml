@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage
+    x:Class="Translation.Views.Components.Popups.OrganizationQuestions"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:models="clr-namespace:Translation.DataService.Models;assembly=Translation.DataService"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:popup="http://rotorgames.com"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    xmlns:viewmodels="clr-namespace:Translation.ViewModels"
+    x:DataType="viewmodels:DashboardViewModel">
+
+    <popup:PopupPage.Animation>
+        <popup:MoveAnimation
+            DurationIn="100"
+            DurationOut="100"
+            EasingIn="Linear"
+            EasingOut="Linear"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </popup:PopupPage.Animation>
+
+    <Frame
+        BackgroundColor="{DynamicResource ComponentColor}"
+        CornerRadius="10"
+        HasShadow="True"
+        VerticalOptions="End">
+
+        <Grid Margin="5" RowSpacing="20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="Select question to translate:" />
+
+            <Label
+                Grid.Row="0"
+                touch:TouchEff.Command="{Binding CloseOrgQuestionsPopupCommand}"
+                touch:TouchEff.PressedAnimationDuration="100"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="100"
+                FontAttributes="Bold"
+                FontFamily="FontAwesomeRegular"
+                FontSize="20"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="Center"
+                Text="{x:Static fontawesome:FontAwesomeIcons.Times}"
+                TextColor="{DynamicResource AccentColor}"
+                VerticalOptions="FillAndExpand"
+                VerticalTextAlignment="Center"
+                WidthRequest="20" />
+
+            <ListView
+                Grid.Row="1"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                ItemTapped="ListView_ItemTapped"
+                ItemsSource="{Binding OrganizationQuestions}"
+                SelectionMode="None"
+                SeparatorColor="{DynamicResource SkeletonColor}"
+                SeparatorVisibility="Default">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:UserQuestions">
+                        <ViewCell>
+                            <Label Margin="0,5,0,5" LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Index}" />
+                                        <Span Text=". " />
+                                        <Span Text="{Binding Question}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </Grid>
+
+    </Frame>
+
+</popup:PopupPage>

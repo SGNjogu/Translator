@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Translation.Views.Components.ChatComponents.FontSizeView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    BindingContext="{Binding FontSizeViewViewModel, Source={StaticResource Locator}}">
+
+    <ContentView.Content>
+
+        <StackLayout
+            HorizontalOptions="End"
+            Orientation="Horizontal"
+            Spacing="10"
+            VerticalOptions="Fill">
+
+            <Label
+                touch:TouchEff.Command="{Binding ZoomOut}"
+                touch:TouchEff.PressedAnimationDuration="300"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="300"
+                FontAttributes="Bold"
+                FontFamily="FontAwesomeSolid"
+                FontSize="18"
+                HeightRequest="30"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                Text="{x:Static fontawesome:FontAwesomeIcons.Minus}"
+                TextColor="{DynamicResource AccentColor}"
+                VerticalOptions="Fill"
+                VerticalTextAlignment="Center"
+                WidthRequest="30" />
+
+            <Label Text="Zoom" VerticalTextAlignment="Center" />
+
+            <Label
+                touch:TouchEff.Command="{Binding ZoomIn}"
+                touch:TouchEff.PressedAnimationDuration="300"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="300"
+                FontAttributes="Bold"
+                FontFamily="FontAwesomeSolid"
+                FontSize="18"
+                HeightRequest="30"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                Text="{x:Static fontawesome:FontAwesomeIcons.Plus}"
+                TextColor="{DynamicResource AccentColor}"
+                VerticalOptions="Fill"
+                VerticalTextAlignment="Center"
+                WidthRequest="30" />
+
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentView>

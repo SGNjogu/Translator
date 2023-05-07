@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Translation.Views.Pages.History.History"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    mc:Ignorable="d">
+
+    <ContentView.Content>
+
+        <Grid>
+            <Grid RowSpacing="0">
+
+                <ListView
+                    CachingStrategy="RecycleElement"
+                    HasUnevenRows="True"
+                    IsGroupingEnabled="true"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsBusy}"
+                    ItemTapped="ListView_ItemTapped"
+                    ItemsSource="{Binding HistorySessionsList}"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    SelectionMode="None"
+                    SeparatorColor="Gray"
+                    SeparatorVisibility="None">
+
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <pancakeView:PancakeView
+                                    Margin="5"
+                                    Padding="15,10,10,10"
+                                    BackgroundColor="{DynamicResource ImageBackgroundColor}"
+                                    CornerRadius="5">
+                                    <Label Text="{Binding SessionDate, StringFormat='{0:dddd, dd MMMM yyyy}'}" />
+                                </pancakeView:PancakeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <pancakeView:PancakeView
+                                    Margin="5"
+                                    Padding="15,10,10,5"
+                                    BackgroundColor="{DynamicResource ComponentColor}"
+                                    CornerRadius="5">
+
+                                    <Grid>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+
+                                        <Label Grid.Row="0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span
+                                                        FontSize="17"
+                                                        Text="{Binding DisplaySourceLanguage}"
+                                                        TextColor="{DynamicResource SecondaryAccentColor}" />
+                                                    <Span Text="     " />
+                                                    <Span
+                                                        FontFamily="FontAwesomeLight"
+                                                        Text="{x:Static fontawesome:FontAwesomeIcons.Exchange}"
+                                                        TextColor="{DynamicResource SecondaryAccentColor}" />
+                                                    <Span Text="     " />
+                                                    <Span
+                                                        FontSize="17"
+                                                        Text="{Binding DisplayTargetLanguage}"
+                                                        TextColor="{DynamicResource SecondaryAccentColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Grid.Row="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span FontFamily="FontAwesomeLight" Text="{x:Static fontawesome:FontAwesomeIcons.Clock}" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding RawStartTime}" />
+                                                    <Span Text="  " />
+                                                    <Span FontFamily="FontAwesomeLight" Text="{x:Static fontawesome:FontAwesomeIcons.ArrowRight}" />
+                                                    <Span Text="  " />
+                                                    <Span Text="{Binding RawEndTime}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                    </Grid>
+
+                                </pancakeView:PancakeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding NoResults}"
+                    Spacing="15"
+                    VerticalOptions="Center">
+                    <Label
+                        FontFamily="FontAwesomeLight"
+                        FontSize="35"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static fontawesome:FontAwesomeIcons.EmptySet}"
+                        TextColor="Gray"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="No Results"
+                        TextColor="Gray"
+                        VerticalOptions="End" />
+                </StackLayout>
+                <Grid.Triggers>
+                    <DataTrigger
+                        Binding="{Binding HistorySectionEnabled}"
+                        TargetType="Grid"
+                        Value="True">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding HistorySectionEnabled}"
+                        TargetType="Grid"
+                        Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Grid.Triggers>
+            </Grid>
+            <Grid>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="25"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="This section has been disabled by your organization."
+                    TextColor="{StaticResource SecondaryAccentColor}"
+                    VerticalOptions="CenterAndExpand" />
+                <Grid.Triggers>
+                    <DataTrigger
+                        Binding="{Binding HistorySectionEnabled}"
+                        TargetType="Grid"
+                        Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding HistorySectionEnabled}"
+                        TargetType="Grid"
+                        Value="False">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Grid.Triggers>
+            </Grid>
+        </Grid>
+
+    </ContentView.Content>
+
+</ContentView>

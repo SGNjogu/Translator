@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Translation.Views.Components.QuickStartComponents.QuickStartDeviceView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
+    <ContentView.Content>
+
+        <ListView
+            x:Name="audioDevices"
+            Grid.Row="1"
+            CachingStrategy="RecycleElement"
+            HasUnevenRows="True"
+            ItemTapped="ListView_ItemTapped"
+            ItemsSource="{Binding AudioDevices}"
+            SelectionMode="None"
+            SeparatorColor="Transparent"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <ViewCell>
+
+                        <pancakeView:PancakeView
+                            Margin="15"
+                            Padding="15,10,15,10"
+                            CornerRadius="10">
+
+                            <pancakeView:PancakeView.Border>
+                                <pancakeView:Border Thickness="3" Color="{Binding SelectedColor}" />
+                            </pancakeView:PancakeView.Border>
+
+                            <StackLayout
+                                Padding="5,0,5,0"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <Label
+                                    Grid.Column="0"
+                                    FontFamily="FontAwesomeLight"
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding Glyph}"
+                                    VerticalTextAlignment="Center" />
+
+                                <Label
+                                    Grid.Column="0"
+                                    FontSize="18"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding ParentName}"
+                                    VerticalTextAlignment="Center" />
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </StackLayout>
+
+                        </pancakeView:PancakeView>
+
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </ContentView.Content>
+
+</ContentView>

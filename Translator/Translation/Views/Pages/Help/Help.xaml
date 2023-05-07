@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Translation.Views.Pages.Help.Help"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    mc:Ignorable="d">
+
+    <NavigationPage.TitleView>
+        <StackLayout
+            Padding="5,0,0,0"
+            Orientation="Horizontal"
+            Spacing="10">
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="30"
+                Source="icon" />
+            <Label
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="Help"
+                TextColor="{DynamicResource SecondaryAccentColor}"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentView.Content>
+
+        <ScrollView>
+
+            <Grid Margin="0,0,0,20">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="0,10,0,0"
+                    Spacing="0"
+                    VerticalOptions="Start">
+
+                    <StackLayout
+                        Padding="20,20,10,20"
+                        touch:TouchEff.Command="{Binding GoToAboutCommand}"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.InfoCircle}" />
+
+                        <Label Text="About" VerticalOptions="Center" />
+
+                    </StackLayout>
+
+                    <BoxView
+                        Margin="10,0,10,0"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="LightGray" />
+
+                    <StackLayout
+                        Padding="20"
+                        touch:TouchEff.Command="{Binding GoToFeaturesCommand}"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Bell}" />
+
+                        <Label Text="What's New" VerticalOptions="Center" />
+
+                    </StackLayout>
+                    <BoxView
+                        Margin="10,0,10,0"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="LightGray" />
+
+                    <StackLayout
+                        Padding="20"
+                        touch:TouchEff.Command="{Binding TermsOfUseCommand}"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.ListAlt}" />
+
+                        <Label Text="Terms of Use" VerticalOptions="Center" />
+
+                    </StackLayout>
+                    <BoxView
+                        Margin="10,0,10,0"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="LightGray" />
+
+                    <StackLayout
+                        Padding="20"
+                        touch:TouchEff.Command="{Binding ResellerInfoCommand}"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.AddressCard}" />
+
+                        <Label Text="Reseller Information" VerticalOptions="Center" />
+
+                    </StackLayout>
+                    <BoxView
+                        Margin="10,0,10,0"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="LightGray" />
+
+                    <StackLayout
+                        Padding="20"
+                        touch:TouchEff.Command="{Binding SendFeedbackCommand}"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Envelope}" />
+
+                        <Label Text="Send Feedback" VerticalOptions="Center" />
+
+                    </StackLayout>
+                    <BoxView
+                        Margin="10,0,10,0"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="LightGray" />
+
+                    <StackLayout
+                        Padding="20"
+                        touch:TouchEff.Command="{Binding LogoutCommand}"
+                        touch:TouchEff.PressedAnimationDuration="300"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="300"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.SignOut}" />
+
+                        <Label Text="Sign Out" VerticalOptions="Center" />
+
+                    </StackLayout>
+                    <BoxView
+                        Margin="10,0,10,0"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="End"
+                        Color="LightGray" />
+
+                    <Label
+                        Margin="0"
+                        Padding="20,30,0,0"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HorizontalOptions="Fill"
+                        Text="Data Consent Status" />
+
+                    <Label
+                        Margin="0"
+                        Padding="20,10,0,20"
+                        BackgroundColor="{DynamicResource ComponentColor}"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding DataConsentInfo}" />
+
+                </StackLayout>
+
+                <Label
+                    Grid.Row="1"
+                    Margin="0,-10,0,0"
+                    Padding="0,40,0,20"
+                    BackgroundColor="{DynamicResource ComponentColor}"
+                    FontAttributes="Bold"
+                    FontSize="30"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
+                    Text="Tala"
+                    TextColor="{DynamicResource AccentColor}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+
+        </ScrollView>
+
+    </ContentView.Content>
+</ContentView>

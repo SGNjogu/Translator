@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Translation.Views.Components.QuickStartComponents.QuickStartSetupView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect">
+
+    <ContentView.Content>
+
+        <Grid Margin="15,0,15,0" RowSpacing="20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  Title  -->
+
+            <Grid Grid.Row="0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Text="Your Setup"
+                    VerticalOptions="Center" />
+
+                <pancakeView:PancakeView
+                    Grid.Column="1"
+                    Padding="20,8,20,8"
+                    touch:TouchEff.Command="{Binding ChangeSetupCommand}"
+                    touch:TouchEff.PressedAnimationDuration="100"
+                    touch:TouchEff.PressedOpacity="0.6"
+                    touch:TouchEff.PressedScale="0.9"
+                    touch:TouchEff.RegularAnimationDuration="100"
+                    BackgroundColor="{DynamicResource AccentColor}"
+                    CornerRadius="10"
+                    HorizontalOptions="End"
+                    Shadow="{pancakeView:ShadowMarkup BlurRadius=5,
+                                                      Offset='10,10',
+                                                      Color=Gray}"
+                    VerticalOptions="Center">
+
+                    <pancakeView:PancakeView.Border>
+                        <pancakeView:Border Thickness="1" Color="#b624c1" />
+                    </pancakeView:PancakeView.Border>
+
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="Change Setup"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                </pancakeView:PancakeView>
+
+            </Grid>
+
+            <Label
+                Grid.Row="1"
+                Margin="0,30,0,0"
+                FontSize="18"
+                Text="Your Languages" />
+
+            <!--  Languages  -->
+            <Grid Grid.Row="2" ColumnSpacing="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <pancakeView:PancakeView
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="30"
+                        HeightRequest="60"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="60">
+
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Source="{Binding LanguageOne.Flag, Mode=TwoWay}"
+                            VerticalOptions="Center"
+                            WidthRequest="60" />
+
+                    </pancakeView:PancakeView>
+
+                    <Label
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="CharacterWrap"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding LanguageOne.DisplayName}" />
+                                <Span Text=" " />
+                                <Span Text="(" />
+                                <Span Text="{Binding LanguageOne.EnglishName}" />
+                                <Span Text=")" />
+                                <Span Text="&#x0a;" />
+                                <Span Text="{Binding LanguageOne.CountryNativeName}" />
+                                <Span Text=" " />
+                                <Span Text="(" />
+                                <Span Text="{Binding LanguageOne.CountryName}" />
+                                <Span Text=")" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+
+                <Label
+                    Grid.Column="1"
+                    Margin="0,0,0,15"
+                    FontAttributes="Bold"
+                    FontFamily="FontAwesomeRegular"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Text="{x:Static fontawesome:FontAwesomeIcons.Exchange}"
+                    TextColor="White"
+                    VerticalTextAlignment="Center" />
+
+                <StackLayout Grid.Column="2">
+                    <pancakeView:PancakeView
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="30"
+                        HeightRequest="60"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="60">
+
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="60"
+                            HorizontalOptions="Center"
+                            Source="{Binding LanguageTwo.Flag, Mode=TwoWay}"
+                            VerticalOptions="Center"
+                            WidthRequest="60" />
+
+                    </pancakeView:PancakeView>
+
+                    <Label
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="CharacterWrap"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding LanguageTwo.DisplayName}" />
+                                <Span Text=" " />
+                                <Span Text="(" />
+                                <Span Text="{Binding LanguageTwo.EnglishName}" />
+                                <Span Text=")" />
+                                <Span Text="&#x0a;" />
+                                <Span Text="{Binding LanguageTwo.CountryNativeName}" />
+                                <Span Text=" " />
+                                <Span Text="(" />
+                                <Span Text="{Binding LanguageTwo.CountryName}" />
+                                <Span Text=")" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+            </Grid>
+
+            <Label
+                Grid.Row="3"
+                Margin="0,30,0,0"
+                FontSize="18"
+                Text="Your Device" />
+
+            <StackLayout
+                Grid.Row="4"
+                Orientation="Horizontal"
+                Spacing="10">
+                <Label
+                    Grid.Column="0"
+                    FontFamily="FontAwesomeLight"
+                    FontSize="20"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding SelectedAudioDevice.Glyph}"
+                    TextColor="{DynamicResource AccentColor}"
+                    VerticalTextAlignment="Center" />
+
+                <Label
+                    Grid.Column="0"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding SelectedAudioDevice.ParentName}"
+                    VerticalTextAlignment="Center" />
+
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="5"
+                touch:TouchEff.Command="{Binding StartTranslationCommand}"
+                touch:TouchEff.PressedAnimationDuration="300"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="300"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <pancakeView:PancakeView
+                    Padding="0"
+                    BackgroundColor="{DynamicResource SecondaryAccentShade}"
+                    CornerRadius="40"
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="80">
+
+                    <pancakeView:PancakeView
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="30"
+                        HeightRequest="60"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="60">
+
+                        <Label
+                            FontFamily="FontAwesomeSolid"
+                            FontSize="25"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Microphone}"
+                            TextColor="{DynamicResource AccentColor}"
+                            VerticalTextAlignment="Center" />
+
+                    </pancakeView:PancakeView>
+                </pancakeView:PancakeView>
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Translate"
+                    TextColor="{DynamicResource AccentColor}" />
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="6"
+                Margin="0,0,0,10"
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="End">
+                <CheckBox
+                    IsChecked="{Binding RememberSetup}"
+                    VerticalOptions="Center"
+                    Color="{DynamicResource AccentColor}" />
+                <Label Text="Remember this setup" VerticalOptions="Center" />
+            </StackLayout>
+
+        </Grid>
+
+    </ContentView.Content>
+
+</ContentView>

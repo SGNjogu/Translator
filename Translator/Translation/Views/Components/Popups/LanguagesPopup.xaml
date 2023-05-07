@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage
+    x:Class="Translation.Views.Components.Popups.LanguagesPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:customControls="clr-namespace:Translation.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    mc:Ignorable="d">
+
+    <popup:PopupPage.Animation>
+        <animations:MoveAnimation
+            DurationIn="100"
+            DurationOut="100"
+            EasingIn="Linear"
+            EasingOut="Linear"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </popup:PopupPage.Animation>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            Padding="10"
+            BackgroundColor="{DynamicResource ComponentColor}">
+
+            <Label
+                Margin="5,0,0,0"
+                touch:TouchEff.Command="{Binding CloseLanguagesPopupCommand}"
+                touch:TouchEff.PressedAnimationDuration="300"
+                touch:TouchEff.PressedOpacity="0.6"
+                touch:TouchEff.PressedScale="0.9"
+                touch:TouchEff.RegularAnimationDuration="300"
+                FontFamily="FontAwesomeLight"
+                FontSize="35"
+                HorizontalOptions="Start"
+                Text="{x:Static fontawesome:FontAwesomeIcons.Times}"
+                TextColor="{DynamicResource SecondaryColor}"
+                VerticalTextAlignment="Center" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Change Language"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+        <Grid
+            Grid.Row="1"
+            Padding="10,10,10,0"
+            RowSpacing="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                Spacing="10">
+
+                <Label Text="Recently Used" />
+
+                <BoxView
+                    BackgroundColor="{DynamicResource PlaceholderColor}"
+                    HeightRequest="0.5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center" />
+
+            </StackLayout>
+
+            <StackLayout
+                x:Name="recentLanguages"
+                Grid.Row="1"
+                BindableLayout.ItemsSource="{Binding RecentLanguages}"
+                Orientation="Vertical">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Padding="10"
+                            touch:TouchEff.Command="{Binding Path=BindingContext.SelectLanguageCommand, Source={x:Reference recentLanguages}}"
+                            touch:TouchEff.CommandParameter="{Binding .}"
+                            touch:TouchEff.PressedAnimationDuration="300"
+                            touch:TouchEff.PressedOpacity="0.6"
+                            touch:TouchEff.PressedScale="0.9"
+                            touch:TouchEff.RegularAnimationDuration="300"
+                            ColumnSpacing="10">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFill"
+                                HeightRequest="45"
+                                VerticalOptions="Center"
+                                WidthRequest="45">
+
+                                <Image.Source>
+                                    <FileImageSource File="{Binding Flag}" />
+                                </Image.Source>
+
+                            </Image>
+
+                            <Label
+                                Grid.Column="1"
+                                HorizontalTextAlignment="Start"
+                                LineBreakMode="CharacterWrap"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding DisplayName}" />
+                                        <Span Text=" " />
+                                        <Span Text="(" />
+                                        <Span Text="{Binding EnglishName}" />
+                                        <Span Text=")" />
+                                        <Span Text="&#x0a;" />
+                                        <Span Text="{Binding CountryNativeName}" />
+                                        <Span Text=" " />
+                                        <Span Text="(" />
+                                        <Span Text="{Binding CountryName}" />
+                                        <Span Text=")" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+        </Grid>
+
+
+        <Grid
+            Grid.Row="2"
+            Padding="10,10,10,0"
+            RowSpacing="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" RowSpacing="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Text="All Languages" />
+
+                <BoxView
+                    Grid.Row="1"
+                    BackgroundColor="{DynamicResource PlaceholderColor}"
+                    HeightRequest="0.5"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center" />
+
+                <pancakeView:PancakeView
+                    Grid.Row="2"
+                    Padding="10,0,0,0"
+                    CornerRadius="5">
+
+                    <pancakeView:PancakeView.Border>
+                        <pancakeView:Border Thickness="1" Color="Gray" />
+                    </pancakeView:PancakeView.Border>
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Search}"
+                            TextColor="{DynamicResource TertiaryColor}"
+                            VerticalTextAlignment="Center" />
+
+                        <customControls:BorderlessEntry
+                            Grid.Column="1"
+                            HorizontalOptions="Fill"
+                            Placeholder="Search"
+                            PlaceholderColor="{DynamicResource PlaceholderColor}"
+                            Text="{Binding LanguageSearchText}"
+                            TextColor="{DynamicResource SecondaryColor}" />
+
+                    </Grid>
+
+                </pancakeView:PancakeView>
+
+            </Grid>
+
+            <ListView
+                x:Name="languages"
+                Grid.Row="1"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                ItemsSource="{Binding Languages}"
+                SelectionMode="None"
+                SeparatorColor="Transparent"
+                SeparatorVisibility="Default">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                                Padding="10"
+                                touch:TouchEff.Command="{Binding Path=BindingContext.SelectLanguageCommand, Source={x:Reference languages}}"
+                                touch:TouchEff.CommandParameter="{Binding .}"
+                                touch:TouchEff.PressedAnimationDuration="300"
+                                touch:TouchEff.PressedOpacity="0.6"
+                                touch:TouchEff.PressedScale="0.9"
+                                touch:TouchEff.RegularAnimationDuration="300"
+                                ColumnSpacing="10">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HeightRequest="45"
+                                    VerticalOptions="Center"
+                                    WidthRequest="45">
+
+                                    <Image.Source>
+                                        <FileImageSource File="{Binding Flag}" />
+                                    </Image.Source>
+
+                                </Image>
+
+                                <Label
+                                    Grid.Column="1"
+                                    HorizontalTextAlignment="Start"
+                                    LineBreakMode="CharacterWrap"
+                                    VerticalTextAlignment="Center">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding DisplayName}" />
+                                            <Span Text=" " />
+                                            <Span Text="(" />
+                                            <Span Text="{Binding EnglishName}" />
+                                            <Span Text=")" />
+                                            <Span Text="&#x0a;" />
+                                            <Span Text="{Binding CountryNativeName}" />
+                                            <Span Text=" " />
+                                            <Span Text="(" />
+                                            <Span Text="{Binding CountryName}" />
+                                            <Span Text=")" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+
+    </Grid>
+
+</popup:PopupPage>

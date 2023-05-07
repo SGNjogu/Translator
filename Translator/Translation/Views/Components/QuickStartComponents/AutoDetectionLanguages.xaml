@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Translation.Views.Components.QuickStartComponents.AutoDetectionLanguages"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:models="clr-namespace:Translation.Models"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect"
+    xmlns:viewmodels="clr-namespace:Translation.ViewModels"
+    x:DataType="viewmodels:AutoDetectionLanguagesViewModel">
+
+    <ContentView.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <Grid ColumnSpacing="20" VerticalOptions="Center">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout>
+                        <Image
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            HeightRequest="80"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Start"
+                            WidthRequest="80">
+
+                            <Image.Source>
+                                <FileImageSource File="{Binding SelectedCountry.Flag}" />
+                            </Image.Source>
+
+                        </Image>
+
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Start"
+                            LineBreakMode="CharacterWrap"
+                            VerticalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding SelectedCountry.CountryNativeName}" />
+                                    <Span Text=" " />
+                                    <Span Text="(" />
+                                    <Span Text="{Binding SelectedCountry.CountryName}" />
+                                    <Span Text=")" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <ListView
+                        Grid.Column="1"
+                        CachingStrategy="RecycleElement"
+                        HasUnevenRows="True"
+                        ItemTapped="ListView_ItemTapped"
+                        ItemsSource="{Binding SelectedCountry.Languages}"
+                        SelectedItem="{Binding SelectedLanguage}"
+                        SelectionMode="None"
+                        SeparatorColor="Transparent"
+                        SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Language">
+                                <ViewCell>
+
+                                    <pancakeView:PancakeView
+                                        Margin="15"
+                                        Padding="15,8,15,8"
+                                        CornerRadius="10">
+                                        <pancakeView:PancakeView.Border>
+                                            <pancakeView:Border Thickness="3" Color="{Binding SelectedColor}" />
+                                        </pancakeView:PancakeView.Border>
+
+                                        <Label
+                                            Grid.Column="1"
+                                            HorizontalTextAlignment="Start"
+                                            LineBreakMode="CharacterWrap"
+                                            VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding DisplayName}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="(" />
+                                                    <Span Text="{Binding EnglishName}" />
+                                                    <Span Text=")" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </pancakeView:PancakeView>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal">
+
+                    <ActivityIndicator
+                        HeightRequest="25"
+                        HorizontalOptions="Start"
+                        IsRunning="True"
+                        IsVisible="{Binding IsActivityIndicatorRunning}"
+                        VerticalOptions="Center"
+                        WidthRequest="25"
+                        Color="{DynamicResource AccentColor}" />
+
+                    <Label
+                        HorizontalOptions="Start"
+                        Text="{Binding SelectedLanguageText}"
+                        VerticalTextAlignment="Center">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsActivityIndicatorRunning}"
+                                TargetType="Label"
+                                Value="True">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding IsActivityIndicatorRunning}"
+                                TargetType="Label"
+                                Value="False">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+
+                    <Label
+                        touch:TouchEff.Command="{Binding PlayAudioCommand}"
+                        touch:TouchEff.PressedAnimationDuration="100"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="100"
+                        FontFamily="FontAwesomeLight"
+                        FontSize="20"
+                        HeightRequest="40"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static fontawesome:FontAwesomeIcons.VolumeUp}"
+                        TextColor="{DynamicResource AccentColor}"
+                        VerticalOptions="Start"
+                        VerticalTextAlignment="Center"
+                        WidthRequest="40">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsActivityIndicatorRunning}"
+                                TargetType="Label"
+                                Value="True">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger
+                                Binding="{Binding IsActivityIndicatorRunning}"
+                                TargetType="Label"
+                                Value="False">
+                                <Setter Property="IsVisible" Value="True" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    Spacing="20">
+
+                    <pancakeView:PancakeView
+                        touch:TouchEff.Command="{Binding DeselectLanguageCommand}"
+                        touch:TouchEff.PressedAnimationDuration="100"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="100"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        WidthRequest="40">
+
+                        <pancakeView:PancakeView.Border>
+                            <pancakeView:Border Thickness="1" Color="#b624c1" />
+                        </pancakeView:PancakeView.Border>
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Times}"
+                            VerticalOptions="Center" />
+
+                    </pancakeView:PancakeView>
+
+                    <pancakeView:PancakeView
+                        touch:TouchEff.Command="{Binding SelectLanguageCommand}"
+                        touch:TouchEff.PressedAnimationDuration="100"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="100"
+                        CornerRadius="20"
+                        HeightRequest="40"
+                        WidthRequest="40">
+
+                        <pancakeView:PancakeView.Border>
+                            <pancakeView:Border Thickness="1" Color="#b624c1" />
+                        </pancakeView:PancakeView.Border>
+
+                        <Label
+                            FontFamily="FontAwesomeLight"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="{x:Static fontawesome:FontAwesomeIcons.Check}"
+                            VerticalOptions="Center" />
+
+                    </pancakeView:PancakeView>
+
+                </StackLayout>
+
+            </Grid>
+
+        </Grid>
+
+    </ContentView.Content>
+
+</ContentView>

@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Translation.Views.Components.Player.AudioPlayer"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:Translation.Utils"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:slider="clr-namespace:Xamarin.RangeSlider.Forms;assembly=Xamarin.RangeSlider.Forms"
+    xmlns:touch="clr-namespace:TouchEffect;assembly=TouchEffect">
+
+    <ContentView.Content>
+
+        <Grid HeightRequest="120">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,3" EndPoint="0,0">
+                    <GradientStop Offset="0.9" Color="{DynamicResource PageBackgroundColor}" />
+                    <GradientStop Offset="1.0" Color="Transparent" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <Grid RowSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--  Slider  -->
+
+                <Grid Grid.Row="0" Padding="0,10,0,10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <slider:RangeSlider
+                        x:Name="slider"
+                        ActiveColor="{DynamicResource AccentColor}"
+                        DragCompleted="RangeSlider_DragCompleted"
+                        HorizontalOptions="Fill"
+                        LowerValue="0"
+                        MaterialUI="True"
+                        MaxThumbTextHidden="True"
+                        MaximumValue="{Binding Maximum}"
+                        MinThumbHidden="True"
+                        MinThumbTextHidden="True"
+                        ShowTextAboveThumbs="False"
+                        StepValueContinuously="False"
+                        TextColor="{DynamicResource AccentColor}"
+                        UpperValue="{Binding Position.TotalSeconds}" />
+
+                    <Label
+                        Grid.Column="1"
+                        Margin="-10,0,20,0"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="{Binding Duration, StringFormat='{0:mm\\:ss}'}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="1"
+                    Padding="20,10,20,20"
+                    ColumnSpacing="20">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <pancakeView:PancakeView
+                        Grid.Column="0"
+                        touch:TouchEff.Command="{Binding PlayPauseCommand}"
+                        touch:TouchEff.PressedAnimationDuration="100"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="100"
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="17.5"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="35">
+
+                        <Grid>
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.Play}"
+                                TextColor="{DynamicResource AccentColor}"
+                                VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsPlaying}"
+                                        TargetType="Label"
+                                        Value="True">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding IsPlaying}"
+                                        TargetType="Label"
+                                        Value="False">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                IsVisible="{Binding IsPlaying}"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.Pause}"
+                                TextColor="{DynamicResource AccentColor}"
+                                VerticalTextAlignment="Center" />
+
+                        </Grid>
+
+                    </pancakeView:PancakeView>
+
+                    <pancakeView:PancakeView
+                        Grid.Column="1"
+                        touch:TouchEff.Command="{Binding MuteCommand}"
+                        touch:TouchEff.PressedAnimationDuration="100"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="100"
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="17.5"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="35">
+
+                        <Grid>
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.VolumeUp}"
+                                TextColor="{DynamicResource AccentColor}"
+                                VerticalTextAlignment="Center">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsMute}"
+                                        TargetType="Label"
+                                        Value="True">
+                                        <Setter Property="IsVisible" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding IsMute}"
+                                        TargetType="Label"
+                                        Value="False">
+                                        <Setter Property="IsVisible" Value="True" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                IsVisible="{Binding IsMute}"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.VolumeMute}"
+                                TextColor="{DynamicResource AccentColor}"
+                                VerticalTextAlignment="Center" />
+
+                        </Grid>
+
+                    </pancakeView:PancakeView>
+
+                    <Label
+                        Grid.Column="2"
+                        Margin="30,0,0,0"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Session: " />
+                                <Span FontAttributes="Bold" Text="{Binding SelectedSession.SessionNumber}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <pancakeView:PancakeView
+                        Grid.Column="3"
+                        touch:TouchEff.Command="{Binding DownloadCommand}"
+                        touch:TouchEff.PressedAnimationDuration="100"
+                        touch:TouchEff.PressedOpacity="0.6"
+                        touch:TouchEff.PressedScale="0.9"
+                        touch:TouchEff.RegularAnimationDuration="100"
+                        BackgroundColor="{DynamicResource TertiaryAccentShade}"
+                        CornerRadius="17.5"
+                        HeightRequest="35"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        WidthRequest="35"
+                        IsVisible="{Binding DownloadButtonVisibility}">
+                        <Label
+                        Grid.Column="2"
+                                FontAttributes="Bold"
+                                FontFamily="FontAwesomeSolid"
+                                FontSize="15"
+                                HorizontalOptions="Center"
+                                Text="{x:Static fontawesome:FontAwesomeIcons.Download}"
+                                TextColor="{DynamicResource AccentColor}"
+                                VerticalTextAlignment="Center">
+                        </Label>
+                    </pancakeView:PancakeView>
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsPlayerLoading}"
+                VerticalOptions="FillAndExpand">
+
+                <Grid BackgroundColor="{DynamicResource PrimaryColor}" Opacity="0.9" />
+
+                <ActivityIndicator
+                    Margin="2"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    IsRunning="True"
+                    VerticalOptions="Center"
+                    WidthRequest="50"
+                    Color="{DynamicResource AccentColor}" />
+
+            </Grid>
+
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

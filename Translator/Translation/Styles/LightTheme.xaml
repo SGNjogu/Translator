@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="Translation.Styles.LightTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--  global  -->
+    <Color x:Key="PrimaryColor">White</Color>
+    <Color x:Key="SecondaryColor">Black</Color>
+    <Color x:Key="TertiaryColor">Gray</Color>
+    <Color x:Key="AccentColor">#b624c1</Color>
+    <Color x:Key="SecondaryAccentShade">#f6e6f8</Color>
+    <Color x:Key="TertiaryAccentShade">#f1d6f4</Color>
+    <Color x:Key="SecondaryAccentColor">#0A2B93</Color>
+    <Color x:Key="PageBackgroundColor">#fcf7fd</Color>
+    <Color x:Key="ComponentColor">#ffffff</Color>
+    <Color x:Key="ImageBackgroundColor">#e0e0e0</Color>
+    <Color x:Key="PlaceholderColor">Gray</Color>
+
+    <!--  Shell  -->
+    <Color x:Key="ShellDisabledColor">#8e8e8e</Color>
+    <Color x:Key="ShellBackgroundColor">White</Color>
+    <Color x:Key="ShellForegroundColor">Black</Color>
+    <Color x:Key="ShellTabBarBackgroundColor">White</Color>
+    <Color x:Key="ShellTabBarDisabledColor">#8e8e8e</Color>
+    <Color x:Key="ShellTabBarForegroundColor">Black</Color>
+    <Color x:Key="ShellTabBarUnselectedColor">#8e8e8e</Color>
+    <Color x:Key="ShellTitleColor">#b624c1</Color>
+    <Color x:Key="ShellUnselectedColor">#8e8e8e</Color>
+
+    <Color x:Key="TabBackgroundColor">#e0e0e0</Color>
+
+    <!--  Shimmer  -->
+    <Color x:Key="SkeletonColor">#aeaeae</Color>
+
+    <Color x:Key="BtnIconColor">#b624c1</Color>
+    <Color x:Key="BtnOuterColor">#f6e6f8</Color>
+    <Color x:Key="BtnInnerColor">#f1d6f4</Color>
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Styles/Global.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>
